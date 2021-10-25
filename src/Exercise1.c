@@ -11,48 +11,39 @@ ______________________________________
 |____________________________________|
 */
 
-//  C++ code for Pascal's Triangle
 #include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <stdbool.h>
 
-int binomialCoeff(int n, int k);
- 
-// Function to print first
-// n lines of Pascal's
-// Triangle
-void printPascal(int n)
-{
-    // Iterate through every line and
-    // print entries in it
-    for (int line = 0; line < n; line++)
-    {
-        // Every line has number of
-        // integers equal to line
-        // number
-        for (int i = 0; i <= line; i++)
-            printf("%d ",
-                    binomialCoeff(line, i));
+int fact(int n){
+   int a;
+   int sum = 1;
+   for (a = 1; a <= n; a++)
+      sum = sum*a;
+   return sum;
+}
+
+int main(int argc, char *argv[]) {
+    int n = atoi(argv[1]);
+	for (int i = 0; i < n; i++){
+        //for (int j = 0; j <= (n - i - 2); j++){
+        //    printf(" ");
+        //}
+        for (int j = 0 ; j <= i; j++){
+            printf("%d ",fact(i)/(fact(j)*fact(i-j)));
+        }
+         
         printf("\n");
-    }
-}
+   }
+   printf("\n");
 
-int binomialCoeff(int n, int k)
-{
-    int res = 1;
-    if (k > n - k)
-    k = n - k;
-    for (int i = 0; i < k; ++i)
-    {
-        res *= (n - i);
-        res /= (i + 1);
-    }
-    printf ("\n1 \n1 1 \n1 2 1 \n1 3 3 1 \n1 4 6 4 1\n");
-     return res;
+   return 0;
 }
- 
-// Driver program
-int main()
-{
-    int n = 4;
-    printPascal(n);
+int main (int argc, char *argv[]) {
+    //testing variable, applying it to your algorithm for auto-evaluating
+    int testcase = atoi(argv[1]);
+    
+    Ex1(testcase);
     return 0;
 }
