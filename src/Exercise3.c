@@ -51,26 +51,30 @@ void Ex3(int in_arr[], int n){
 	int a[SIZE][SIZE];
 	Array2Dconverter(in_arr,a,n,n);
 	//Your codes here
-	for(int col =0; col <= n; col++){
-        for(int row =0; row <= n; row++){
-         for(int sort_col = col +1; sort_col <= n; sort_col++){
-             for(int sort_row = row +1 ; sort_row <= n; sort_row++){  
-                 if(col==row && sort_col == sort_row && a[row][col] > a[sort_row][sort_col]){
-                    int temp = a[row][col];
-					a[row][col] = a[sort_row][sort_col];
-					a[sort_row][sort_col] = temp;
-                 }
-                 if(col + row == n-1 && sort_col + sort_row == n-1 && a[row][col] > a[sort_row][sort_col]){
-                    int temp = a[row][col];
-					a[row][col] = a[sort_row][sort_col];
-					a[sort_row][sort_col] = temp;
-                 }
-            
-            }
-         }
-         
-        }
-    }
+for (int i = 0; i < n-1; i++)
+	{
+		for (int j = i + 1; j < n; j++)
+		{
+			if (a[i][i] > a[j][j])
+			{
+				int temp = a[i][i];
+				a[i][i] = a[j][j];
+				a[j][j] = temp;
+			}
+		}
+	}
+	for (int i = n-1; i >0; i--)
+	{
+		for (int j = i - 1; j >= 0; j--)
+		{
+			if (a[n - 1 - i][i] > a[n - 1 - j][j])
+			{
+				int temp = a[n - 1 - i][i];
+				a[n - 1 - i][i] = a[n - 1 - j][j];
+				a[n - 1 - j][j] = temp;
+			}
+		}
+	}
 	printArray(a,n,n);
 }
 
