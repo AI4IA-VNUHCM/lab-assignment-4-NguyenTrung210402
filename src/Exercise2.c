@@ -22,52 +22,62 @@ ________________________________________________________________________________
 
 #include <stdio.h>
 #include <stdlib.h>
-#define SIZE 100
-
-void Array2Dconverter(int arr[], int a[SIZE][SIZE], int m, int n)
-{
-	int row, column;
-	int counter = 0;
-	//Convert 1D array to 2D array
-	for (row = 0; row <= (m - 1); row ++){
-		for (column = 0; column <= (n - 1); column ++){
-			a[row][column] = arr[counter];
-			counter++;
-		}
-	}
-}
-
-void printArray(int a[SIZE][SIZE], int m, int n)
-{
-	int row, column;
-
-	for (row = 0; row <= (m - 1); row ++){
-		for (column = 0; column <= (n - 1); column ++){
-			printf("%d ", a[row][column]);
-		}
-		printf("\n");
-	}
-}
-
-void Ex2(int arr[], int m, int n){
-	int a[SIZE][SIZE];
-	Array2Dconverter(arr,a,m,n);
-	//Your codes here
-
-	printArray(a, m, n);
-}
+#include <math.h>
+#include <stdbool.h>
 
 int main(int argc, char *argv[]) {
 	//testing variable, applying it to your algorithm for auto-evaluating
 	int row = atoi(argv[1]);
 	int col = atoi(argv[2]);
 	argc-=3;
-	int testcase[argc],i;
-	for(i=0; i<argc;i++){
-		testcase[i] = atoi(argv[i+3]);
+	int rows[argc/col][argc/col];
+    int i = 3;
+
+    // Build 2D array
+    for(int r = 0; r < row; r++){
+		for(int c = 0; c < col; c++){
+            rows[r][c] = atoi(argv[i]);
+            i++;
+        }
 	}
 
-	Ex2(testcase, row, col);
+    // Sort odd acs
+    int current, next, temp;
+    for(int i = 0; i < row; i ++){
+        for(int r = 0; r < row - 1; r++){
+            for(int c = 0; c < col; c++){
+                current = rows[r][c];
+                next = rows[r+1][c];
+                
+                if(c%2 == 0){
+                    // sort even desc
+                    if(next > current)
+                    {
+                        temp = rows[r][c];
+                        rows[r][c] = next;
+                        rows[r+1][c] = temp;
+                    }
+                }else{
+                    // sort odd acs
+                    if(next < current)
+                    {
+                        temp = rows[r][c];
+                        rows[r][c] = next;
+                        rows[r+1][c] = temp;
+                    }
+                }
+                
+            }
+        }
+    }
+
+    for(int r = 0; r < row; r++){
+		for(int c = 0; c < col; c++){
+            printf("%d ", rows[r][c]);
+        }
+        printf("\n");
+	}
 	
+    printf("\n");
 	return 0;
 }
