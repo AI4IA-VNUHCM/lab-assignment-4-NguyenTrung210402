@@ -14,29 +14,29 @@ ______________________________________
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include <stdbool.h>
 
-int fact(int n){
-   int a;
-   int sum = 1;
-   for (a = 1; a <= n; a++)
-      sum = sum*a;
-   return sum;
+void Ex1(int n){
+	//Your codes here
+int arr[10][10];
+for (int i = 0; i <= n; i++)
+{ 
+	for (int j = 0; j <= i; j++)
+	{ if (i == j || j == 0) 
+	{ arr[i][j] = 1;
+	} 
+	else 
+	{ arr[i][j]= arr[i-1][j-1]+ arr[i-1][j];
+	}
+	printf("%d ", arr[i][j]);
+	}
+	printf("\n");
+}
 }
 
 int main(int argc, char *argv[]) {
-    int n = atoi(argv[1]);
-	for (int i = 0; i < n; i++){
-        //for (int j = 0; j <= (n - i - 2); j++){
-        //    printf(" ");
-        //}
-        for (int j = 0 ; j <= i; j++){
-            printf("%d ",fact(i)/(fact(j)*fact(i-j)));
-        }
-         
-        printf("\n");
-   }
-   printf("\n");
-
-   return 0;
+	//testing variable, applying it to your algorithm for auto-evaluating
+	int testcase = atoi(argv[1]);
+	
+	Ex1(testcase);
+	return 0;
 }
