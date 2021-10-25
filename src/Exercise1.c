@@ -40,10 +40,3 @@ int main(int argc, char *argv[]) {
 
    return 0;
 }
-int main (int argc, char *argv[]) {
-    //testing variable, applying it to your algorithm for auto-evaluating
-    int testcase = atoi(argv[1]);
-    
-    Ex1(testcase);
-    return 0;
-}
