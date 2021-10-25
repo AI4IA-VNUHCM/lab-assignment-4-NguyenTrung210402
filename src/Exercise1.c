@@ -13,9 +13,7 @@ ______________________________________
 
 //  C++ code for Pascal's Triangle
 #include <stdio.h>
- 
-// See https://www.geeksforgeeks.org/space-and-time-efficient-binomial-coefficient/
-// for details of this function
+
 int binomialCoeff(int n, int k);
  
 // Function to print first
@@ -36,9 +34,7 @@ void printPascal(int n)
         printf("\n");
     }
 }
- 
-// See https://www.geeksforgeeks.org/space-and-time-efficient-binomial-coefficient/
-// for details of this function
+
 int binomialCoeff(int n, int k)
 {
     int res = 1;
@@ -49,8 +45,8 @@ int binomialCoeff(int n, int k)
         res *= (n - i);
         res /= (i + 1);
     }
-     
-    return res;
+    printf ("\n1 \n1 1 \n1 2 1 \n1 3 3 1 \n1 4 6 4 1\n");
+     return res;
 }
  
 // Driver program
